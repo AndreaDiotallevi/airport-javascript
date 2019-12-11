@@ -7,15 +7,13 @@ describe("Weather", function() {
     weather = new Weather();
   })
 
-  describe("randomly sets the weather", function() {
-    it("sometimes to stormy", function() {
-      spyOn(Math, "random").and.returnValue(1);
-      expect(weather.isStormy()).toEqual(true);
-    })
+  it("gives stormy weather", function() {
+    spyOn(Math, "random").and.returnValue(1);
+    expect(weather.isStormy()).toBeTruthy();
+  })
 
-    it("sometimes not to stormy", function() {
-      spyOn(Math, "random").and.returnValue(0);
-      expect(weather.isStormy()).toEqual(false);
-    });
+  it("gives not stormy other times", function() {
+    spyOn(Math, "random").and.returnValue(0);
+    expect(weather.isStormy()).toBeFalsy();
   });
 })
